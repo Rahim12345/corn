@@ -57,8 +57,8 @@
                                 </a>
                                 <div class="dropdown-menu">
                                     <a href="{{ route('service.banner') }}" class="dropdown-item">Banner</a>
-                                    <a href="./sign-up.html" class="dropdown-item">Servis &nbsp; <i class="fa fa-plus"></i></a>
-                                    <a href="./forgot-password.html" class="dropdown-item">Məhsul &nbsp; <i class="fa fa-plus"></i></a>
+                                    <a href="{{ route('service.index') }}" class="dropdown-item">Servis &nbsp; <i class="fa fa-plus"></i></a>
+                                    <a href="{{ route('product.index') }}" class="dropdown-item">Məhsul &nbsp; <i class="fa fa-plus"></i></a>
                                 </div>
                             </div>
 
