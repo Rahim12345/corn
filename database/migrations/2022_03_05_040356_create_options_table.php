@@ -16,7 +16,7 @@ class CreateOptionsTable extends Migration
         Schema::create('options', function (Blueprint $table) {
             $table->id();
             $table->string('key');
-            $table->text('value');
+            $table->text('value')->nullable();
             $table->timestamps();
         });
     }
@@ -31,4 +31,3 @@ class CreateOptionsTable extends Migration
         Schema::dropIfExists('options');
     }
 }
-    

@@ -48,16 +48,20 @@
                             </span>
                             <span class="nav-link-title">
                               {{ __('static.menus') }}
-                                @if(\Illuminate\Support\Facades\Route::currentRouteName() == 'product.create')
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><polyline points="6 9 12 15 18 9" /></svg>
-                                @endif
                             </span>
                         </a>
                         <div class="dropdown-menu">
-                            <a class="dropdown-item" href="" >
-                                ....
-                            </a>
-                            
+                            <div class="dropend">
+                                <a class="dropdown-item dropdown-toggle" href="#sidebar-authentication" data-bs-toggle="dropdown" role="button" aria-expanded="false" >
+                                    Servislər
+                                </a>
+                                <div class="dropdown-menu">
+                                    <a href="{{ route('service.banner') }}" class="dropdown-item">Banner</a>
+                                    <a href="./sign-up.html" class="dropdown-item">Servis &nbsp; <i class="fa fa-plus"></i></a>
+                                    <a href="./forgot-password.html" class="dropdown-item">Məhsul &nbsp; <i class="fa fa-plus"></i></a>
+                                </div>
+                            </div>
+
                         </div>
                     </li>
                 </ul>

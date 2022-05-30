@@ -6,9 +6,12 @@ use App\Helpers\Options;
 use App\Models\Option;
 use App\Http\Requests\StoreOptionRequest;
 use App\Http\Requests\UpdateOptionRequest;
+use App\Traits\FileUploader;
+use Illuminate\Http\Request;
 
 class OptionController extends Controller
 {
+    use FileUploader;
     /**
      * Display a listing of the resource.
      *
@@ -22,7 +25,7 @@ class OptionController extends Controller
             'youtube'=>Options::getOption('youtube'),
             'email'=>Options::getOption('email'),
             'tel'=>Options::getOption('tel'),
-            
+
         ]);
     }
 
@@ -114,5 +117,29 @@ class OptionController extends Controller
     {
         //
     }
+
+    public function servicesBanner()
+    {
+        return view('back.pages.services.banner');
+    }
+
+    public function servicesBannerPost(Request $request)
+    {
+        $this->validate($request,[
+            'src'=>'nullable|max:2048'
+        ],[],[
+            'src'=>'Photo'
+        ]);
+
+        $src   = $this->fileUpdate(\App\Helpers\Options::getOption('service_banner'), $request->hasFile('src'), $request->src, 'files/service_banner/');
+        Option::updateOrCreate(
+            ['key'   => 'service_banner'],
+            [
+                'value' => $src
+            ]
+        );
+
+        toastSuccess('Data əlavə edildi');
+        return redirect()->back();
+    }
 }
-    

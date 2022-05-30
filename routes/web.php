@@ -40,4 +40,8 @@ Route::group(['prefix'=>'admin','middleware'=>['auth', 'locale']],function (){
 
     Route::resource('option',App\Http\Controllers\OptionController::class);
 
+    Route::get('service-banner',[\App\Http\Controllers\OptionController::class,'servicesBanner'])->name('service.banner');
+
+    Route::post('service-banner-post',[\App\Http\Controllers\OptionController::class,'servicesBannerPost'])->name('service.banner.post');
+
 });
