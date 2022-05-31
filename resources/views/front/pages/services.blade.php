@@ -29,18 +29,15 @@
                 <ul class="projects-masonry row __js_projects-grid">
                     @foreach($products as $product)
                     <li class="projects-masonry__item col-6 col-md-4 col-xl-3 __js_masonry-item veb">
-                        <a class="card card--small card--masonry" href="projects-detail.html">
+                        <a class="card card--small card--masonry" href="{{ route('front.prodoct.details',['id'=>$product->id]) }}">
                             <div class="card__image">
                                 <img src="{{ asset('files/products/covers/'.$product->src) }}"  width="350" height="550" alt="">
                             </div>
                             <div class="card__content">
-                                <h3 class="card__heading">Villa
-                                    <br>In
-                                    <br>London
-                                </h3>
-                                <div class="card__text">Projects for many large domestic and foreign corporations, enterprises in many elds such as nance, banking, F&B, education, communication.</div>
+                                <h3 class="card__heading">{{ $product->{'title_'.app()->getLocale()} }}</h3>
+                                <div class="card__text">{{ $product->{'text_'.app()->getLocale()} }}</div>
                                 <div class="card__bottom">
-                <span class="card__link">See project
+                <span class="card__link">{{ __('menu.see_project') }}
                   <svg width="20" height="20">
                     <use xlink:href="#chevron-right"></use>
                   </svg>

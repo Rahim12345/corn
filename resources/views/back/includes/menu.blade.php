@@ -53,6 +53,14 @@
                         <div class="dropdown-menu">
                             <div class="dropend">
                                 <a class="dropdown-item dropdown-toggle" href="#sidebar-authentication" data-bs-toggle="dropdown" role="button" aria-expanded="false" >
+                                    Əsas Səhifə
+                                </a>
+                                <div class="dropdown-menu">
+                                    <a href="{{ route('home-banner.create') }}" class="dropdown-item">Banner</a>
+                                </div>
+                            </div>
+                            <div class="dropend">
+                                <a class="dropdown-item dropdown-toggle" href="#sidebar-authentication" data-bs-toggle="dropdown" role="button" aria-expanded="false" >
                                     Servislər
                                 </a>
                                 <div class="dropdown-menu">

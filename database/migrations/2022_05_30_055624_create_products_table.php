@@ -23,6 +23,7 @@ class CreateProductsTable extends Migration
             $table->string('text_az')->nullable();
             $table->string('text_en')->nullable();
             $table->string('text_ru')->nullable();
+            $table->integer('hits')->default(0);
             $table->timestamps();
 
             $table->foreign('service_id')

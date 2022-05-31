@@ -1,11 +1,16 @@
 <?php
 
 use App\Http\Controllers\front\PagesController;
+use App\Http\Controllers\HomeBannerController;
 use Illuminate\Support\Facades\Route;
 
 Route::group(['middleware'=>'locale'],function (){
-    Route::get('/', [PagesController::class, 'home'])->name('front.home');
-    Route::get('/services/{slug?}', [PagesController::class, 'services'])->name('front.services');
+    Route::get('/', [PagesController::class, 'home'])
+        ->name('front.home');
+    Route::get('/services/{slug?}', [PagesController::class, 'services'])
+        ->name('front.services');
+    Route::get('/service/project-details/{id}', [PagesController::class, 'prodoctDetails'])
+        ->name('front.prodoct.details');
 });
 
 
@@ -19,6 +24,9 @@ Route::group(['prefix'=>'admin','middleware'=>['auth', 'locale']],function (){
         ->name('back.profile');
 
     Route::resource('option',App\Http\Controllers\OptionController::class);
+
+    Route::resource('home-banner', HomeBannerController::class);
+    Route::get('home-banner-deleter/{id}',[HomeBannerController::class,'deleter'])->name('home.banner.deleter');
 
     Route::get('service-banner',[\App\Http\Controllers\OptionController::class,'servicesBanner'])->name('service.banner');
 

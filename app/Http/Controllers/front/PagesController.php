@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\front;
 
 use App\Http\Controllers\Controller;
+use App\Models\HomeBanner;
 use App\Models\Product;
 use App\Models\Service;
 use Illuminate\Http\Request;
@@ -27,7 +28,8 @@ class PagesController extends Controller
             'zero'=>$this->zero,
             'first'=>$this->first,
             'second'=>$this->second,
-            'third'=>$this->third
+            'third'=>$this->third,
+            'banners'=>HomeBanner::latest()->get()
         ]);
     }
 
@@ -35,8 +37,8 @@ class PagesController extends Controller
     {
         if ($slug == null)
         {
-            $first = Service::firstOrFail();
-            $products   = Product::where('service_id',$first->id)->paginate(2);
+            $first = Service::latest()->firstOrFail();
+            $products   = Product::where('service_id',$first->id)->paginate(20);
         }
         else
         {
@@ -45,7 +47,7 @@ class PagesController extends Controller
                 ->orWhere('slug_en',$slug)
                 ->orWhere('slug_ru',$slug)
                 ->firstOrFail();
-            $products   = Product::where('service_id',$first->id)->paginate(2);
+            $products   = Product::where('service_id',$first->id)->paginate(20);
         }
         $services   = Service::latest()->get();
         return view('front.pages.services', compact('products','services'));
@@ -72,5 +74,13 @@ class PagesController extends Controller
         {
             $this->third   = Product::with('images','service')->where('service_id',$services[3])->take(4)->get();
         }
+    }
+
+    public function prodoctDetails($id)
+    {
+        $product = Product::with('images','service')->findOrFail($id);
+
+        $product->increment('hits');
+        return view('front.pages.product-details', compact('product'));
     }
 }

@@ -33,7 +33,7 @@ class StoreProductRequest extends FormRequest
             'title_en'=>'nullable|max:255',
             'title_ru'=>'nullable|max:255',
             'images'=>'nullable',
-            'images.*'=>'nullable|image|max:2048'
+            'images.*'=>'nullable|image|max:20000'
         ];
     }
 

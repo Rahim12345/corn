@@ -12,26 +12,13 @@
             <div class="main-sliders an-si">
                 <div class="bend niceties preview-2">
                     <div id="ensign-nivoslider-2" class="slides">
-                        <img
-                            src="https://corn.az/frontend/web/img/slider/1920x710/1569571716_87j3YO.jpg"
-                            alt=""
-                            title="#slider-direction-3"
-                        />
-                        <img
-                            src="https://corn.az/frontend/web/img/slider/1920x710/1568714044_a1U94l.jpg"
-                            alt=""
-                            title="#slider-direction-1"
-                        />
-                        <img
-                            src="https://corn.az/frontend/web/img/slider/1920x710/1568714165_GK-gKx.jpg"
-                            alt=""
-                            title="#slider-direction-1"
-                        />
-                        <img
-                            src=" https://corn.az/frontend/web/img/slider/1920x710/1568714527_zNkDNW.jpg"
-                            alt=""
-                            title="#slider-direction-1"
-                        />
+                        @foreach($banners as $banner)
+                            <img
+                                src="{{ asset('files/home/banners/'.$banner->src) }}"
+                                alt=""
+                                title="#slider-direction-{{ $loop->iteration }}"
+                            />
+                        @endforeach
                     </div>
                 </div>
             </div>
@@ -69,7 +56,7 @@
                         @foreach($zero as $z)
                         <a
                             class="card swiper-slide  {{ $z->service->{'slug_'.app()->getLocale()} }}"
-                            href="projects-detail.html"
+                            href="{{ route('front.prodoct.details',['id'=>$z->id]) }}"
                         >
                             <div class="card__image">
                                 <img
@@ -100,7 +87,7 @@
                         @foreach($first as $z)
                             <a
                                 class="card swiper-slide  {{ $z->service->{'slug_'.app()->getLocale()} }}"
-                                href="projects-detail.html"
+                                href="{{ route('front.prodoct.details',['id'=>$z->id]) }}"
                             >
                                 <div class="card__image">
                                     <img
@@ -131,7 +118,7 @@
                         @foreach($second as $z)
                             <a
                                 class="card swiper-slide  {{ $z->service->{'slug_'.app()->getLocale()} }}"
-                                href="projects-detail.html"
+                                href="{{ route('front.prodoct.details',['id'=>$z->id]) }}"
                             >
                                 <div class="card__image">
                                     <img
@@ -162,7 +149,7 @@
                         @foreach($third as $z)
                             <a
                                 class="card swiper-slide {{ $z->service->{'slug_'.app()->getLocale()} }}"
-                                href="projects-detail.html"
+                                href="{{ route('front.prodoct.details',['id'=>$z->id]) }}"
                             >
                                 <div class="card__image">
                                     <img

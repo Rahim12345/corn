@@ -28,7 +28,6 @@ Trait FileUploader
         {
             foreach($request->file($inputName) as $file)
             {
-//                $file   = $request->{$inputName};
                 $name   = $file->hashName();
                 $file->move(public_path($path), $name);
                 $names[] = $name;
