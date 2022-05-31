@@ -108,4 +108,15 @@ class ServiceController extends Controller
         toastSuccess('Data silindi');
         return redirect()->route('service.index');
     }
+
+    public function serviceChanger($id)
+    {
+        $service = Service::findOrFail($id);
+        $service->update([
+            'on_home'=>$service->on_home == 0 ? 1 : 0
+        ]);
+
+        toastSuccess('Status changed');
+        return redirect()->route('service.index');
+    }
 }

@@ -6,10 +6,6 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>{{ config('app.name')}} - @yield('title')</title>
-    @if(\Illuminate\Support\Facades\Route::currentRouteName() == 'product.create')
-        <link rel="stylesheet" href="{{ asset('scalis/css/custom.css') }}">
-    @endif
-
     <link href="{{ asset('back/dist/css/tabler.min.css') }}" rel="stylesheet"/>
     <link href="{{ asset('back/dist/css/tabler-flags.min.css') }}" rel="stylesheet"/>
     <link href="{{ asset('back/dist/css/tabler-payments.min.css') }}" rel="stylesheet"/>
@@ -30,7 +26,7 @@
     @toastr_css
     @yield('css')
 </head>
-<body class="antialiased theme-dark">
+<body class="antialiased">
 <input type="hidden" value="{{ env('app_url') }}" id="rootUrl">
 @yield('content')
 <script src="{{ asset('back/dist/js/tabler.min.js') }}"></script>

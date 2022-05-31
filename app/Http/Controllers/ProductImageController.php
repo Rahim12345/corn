@@ -5,9 +5,11 @@ namespace App\Http\Controllers;
 use App\Models\ProductImage;
 use App\Http\Requests\StoreProductImageRequest;
 use App\Http\Requests\UpdateProductImageRequest;
+use App\Traits\FileUploader;
 
 class ProductImageController extends Controller
 {
+    use FileUploader;
     /**
      * Display a listing of the resource.
      *
@@ -81,6 +83,18 @@ class ProductImageController extends Controller
      */
     public function destroy(ProductImage $productImage)
     {
-        //
+        dd($productImage);
+        $this->fileDelete('files/products/images/'.$productImage->src);
+        $productImage->delete();
+    }
+
+    public function deleter($id)
+    {
+        $productImage   = ProductImage::findOrFail($id);
+        $this->fileDelete('files/products/images/'.$productImage->src);
+        $productImage->delete();
+
+        toastSuccess('Data silindi');
+        return redirect()->back();
     }
 }

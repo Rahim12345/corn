@@ -19,6 +19,7 @@
                         <th>Name(AZ)</th>
                         <th>Name(EN)</th>
                         <th>Name(RU)</th>
+                        <th>On Home</th>
                         <th>Action</th>
                     </tr>
                     </thead>
@@ -27,6 +28,7 @@
                             <td data-label="Name(AZ)">{{ $item->name_az }}</td>
                             <td data-label="Name(EN)">{{ $item->name_en }}</td>
                             <td data-label="Name(RU)">{{ $item->name_ru }}</td>
+                            <td data-label="On Home">{!! $item->on_home ? '<a href="'.route('service.changer',['id'=>$item->id]).'" class="btn btn-primary"><i class="fa fa-check"></i></a>' : '<a href="'.route('service.changer',['id'=>$item->id]).'" class="btn btn-danger"><i class="fa fa-times"></i></a>' !!}</td>
                             <td data-label="Action">
                                 <div class="btn-list flex-nowrap">
                                     <a href="{{ route('service.edit',$item->id) }}" class="btn btn-primary"><i class="fa fa-pen"></i></a>

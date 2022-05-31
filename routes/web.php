@@ -1,14 +1,36 @@
 <?php
 
+use App\Http\Controllers\front\PagesController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('welcome');
-})->name('front.home');
+Route::group(['middleware'=>'locale'],function (){
+    Route::get('/', [PagesController::class, 'home'])->name('front.home');
+    Route::get('/services/{slug?}', [PagesController::class, 'services'])->name('front.services');
+});
 
+
+
+
+Route::group(['prefix'=>'admin','middleware'=>['auth', 'locale']],function (){
+
+    Route::get('/',[App\Http\Controllers\AdminController::class,'index'])
+        ->name('back.dashboard');
+    Route::get('profile',[App\Http\Controllers\profileController::class,'profile'])
+        ->name('back.profile');
+
+    Route::resource('option',App\Http\Controllers\OptionController::class);
+
+    Route::get('service-banner',[\App\Http\Controllers\OptionController::class,'servicesBanner'])->name('service.banner');
+
+    Route::post('service-banner-post',[\App\Http\Controllers\OptionController::class,'servicesBannerPost'])->name('service.banner.post');
+    Route::resource('service',App\Http\Controllers\ServiceController::class);
+    Route::get('service-changer/{id}',[App\Http\Controllers\ServiceController::class,'serviceChanger'])->name('service.changer');
+    Route::resource('product',App\Http\Controllers\ProductController::class);
+    Route::get('product-image-deleter/{id}',[App\Http\Controllers\ProductImageController::class,'deleter'])->name('image.deleter');
+});
 
 Route::get('langs/{locale}',[App\Http\Controllers\profileController::class,'langSwitcher'])
-        ->name('lang.swithcher');
+    ->name('lang.swithcher');
 
 Route::get('daxil-ol',[App\Http\Controllers\sign\sign_in_upController::class,'login'])
     ->middleware('locale')
@@ -30,19 +52,3 @@ Route::post('avatar-upload',[ App\Http\Controllers\profileController::class,'ava
 Route::post('profile',[ App\Http\Controllers\profileController::class,'profileUpdate' ])
     ->name('front.profile.update')
     ->middleware('auth');
-
-Route::group(['prefix'=>'admin','middleware'=>['auth', 'locale']],function (){
-
-    Route::get('/',[App\Http\Controllers\AdminController::class,'index'])
-        ->name('back.dashboard');
-    Route::get('profile',[App\Http\Controllers\profileController::class,'profile'])
-        ->name('back.profile');
-
-    Route::resource('option',App\Http\Controllers\OptionController::class);
-
-    Route::get('service-banner',[\App\Http\Controllers\OptionController::class,'servicesBanner'])->name('service.banner');
-
-    Route::post('service-banner-post',[\App\Http\Controllers\OptionController::class,'servicesBannerPost'])->name('service.banner.post');
-    Route::resource('service',App\Http\Controllers\ServiceController::class);
-    Route::resource('product',App\Http\Controllers\ProductController::class);
-});
