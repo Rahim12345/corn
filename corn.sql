@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: May 31, 2022 at 02:57 AM
+-- Generation Time: May 31, 2022 at 09:50 PM
 -- Server version: 5.7.33
 -- PHP Version: 7.4.19
 
@@ -40,6 +40,53 @@ CREATE TABLE `failed_jobs` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `haqqimizdas`
+--
+
+CREATE TABLE `haqqimizdas` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `src` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `text_az` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `text_en` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `text_ru` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `haqqimizdas`
+--
+
+INSERT INTO `haqqimizdas` (`id`, `src`, `text_az`, `text_en`, `text_ru`, `created_at`, `updated_at`) VALUES
+(2, '1XEwlUIuyildCRMK6PZUiPVlqsMfYKAlcrzj83aD.png', 'Digital<br />\r\nMarketing', 'Digital<br />\r\nMarketing', 'Digital<br />\r\nMarketing', '2022-05-31 17:30:33', '2022-05-31 17:30:33'),
+(3, 'Yg7IxslvPNtV3nUWm5m9R1LkoJhyDPMN8skgKOZ3.png', 'Graphic<br />\r\nDesign', 'Graphic<br />\r\nDesign', 'Graphic<br />\r\nDesign', '2022-05-31 17:31:11', '2022-05-31 17:31:11');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `home_banners`
+--
+
+CREATE TABLE `home_banners` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `src` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `home_banners`
+--
+
+INSERT INTO `home_banners` (`id`, `src`, `created_at`, `updated_at`) VALUES
+(1, 'Hpbs1ZH6pg6ObbL6hzSOybnJqj3pKip224JmX15I.jpg', '2022-05-31 15:43:37', '2022-05-31 15:43:37'),
+(2, 'ZD4pZyiRXNcQ9uFrjHm8wXxOqQy8nIHWPm8HMrhN.jpg', '2022-05-31 15:43:37', '2022-05-31 15:43:37'),
+(3, '3qX5UuY9IBybnniL8VO1f0HWfEPdnw8Av5c65K7O.jpg', '2022-05-31 15:43:38', '2022-05-31 15:43:38'),
+(4, '8KMSfh7QJXO9rcIiCNfEygV4cnVfUNLhYZdjys0A.jpg', '2022-05-31 15:43:38', '2022-05-31 15:43:38');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `migrations`
 --
 
@@ -61,7 +108,9 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (5, '2022_03_05_040356_create_options_table', 1),
 (6, '2022_05_30_054857_create_services_table', 2),
 (9, '2022_05_30_055624_create_products_table', 3),
-(10, '2022_05_30_060727_create_product_images_table', 3);
+(10, '2022_05_30_060727_create_product_images_table', 3),
+(11, '2022_05_31_074331_create_home_banners_table', 4),
+(13, '2022_05_31_201305_create_haqqimizdas_table', 5);
 
 -- --------------------------------------------------------
 
@@ -82,7 +131,14 @@ CREATE TABLE `options` (
 --
 
 INSERT INTO `options` (`id`, `key`, `value`, `created_at`, `updated_at`) VALUES
-(1, 'service_banner', 'UPzyYXUxrtpceXHjHX7bHp7id4Aml68Czs8wDiDd.jpg', '2022-05-30 01:41:48', '2022-05-30 20:55:40');
+(1, 'service_banner', 'lKzsnFUMbmzeqq2BJTbLmLXvZIJmVHhjatiqLUQf.jpg', '2022-05-30 01:41:48', '2022-05-31 16:12:07'),
+(2, 'about_banner', '1w5rA2rG32iH8uUUmUICmHKKVStJCOG4UrFNgGW9.jpg', '2022-05-31 16:11:53', '2022-05-31 16:11:53'),
+(3, 'kimik_text_az', '1Biz - Corn reklam agentliyi olaraq, həyatımızda ən faydalı bitkilərdən biri olan qarğıdalıdan qaynaqlandıq. İşimizi onun d&uuml;z&uuml;l&uuml;ş&uuml; kimi simmetrik, faydası kimi dəyərli etdik. Hər zaman ən yaxşısını etməyə və etdiklərimizi ən doğru şəkildə təqdim etməyə &ccedil;alışdıq. Biz kollektiv ruhunu artan saydakı işlərimizlə əks etdirdik. Corn Advertising 10 ildən artıq fəaliyyət g&ouml;stərən uğurlu şirkət olmaqla yanaşı, həm də işini bilən və hər m&uuml;ştərisini uğura aparan m&uuml;təxəssislərdən ibarət peşakar komandadır. Biz hər sifarişimizə fərdi yanaşaraq, m&uuml;ştəri məmnuniyyətini &ouml;n plana &ccedil;əkirik. Hər dəfəsində daha uğurlu nəticələr əldə etmək &uuml;&ccedil;&uuml;n b&uuml;t&uuml;n g&uuml;c&uuml;m&uuml;z&uuml; sərf edirik.', '2022-05-31 16:44:59', '2022-05-31 16:46:50'),
+(4, 'kimik_text_en', '2Biz - Corn reklam agentliyi olaraq, həyatımızda ən faydalı bitkilərdən biri olan qarğıdalıdan qaynaqlandıq. İşimizi onun d&uuml;z&uuml;l&uuml;ş&uuml; kimi simmetrik, faydası kimi dəyərli etdik. Hər zaman ən yaxşısını etməyə və etdiklərimizi ən doğru şəkildə təqdim etməyə &ccedil;alışdıq. Biz kollektiv ruhunu artan saydakı işlərimizlə əks etdirdik. Corn Advertising 10 ildən artıq fəaliyyət g&ouml;stərən uğurlu şirkət olmaqla yanaşı, həm də işini bilən və hər m&uuml;ştərisini uğura aparan m&uuml;təxəssislərdən ibarət peşakar komandadır. Biz hər sifarişimizə fərdi yanaşaraq, m&uuml;ştəri məmnuniyyətini &ouml;n plana &ccedil;əkirik. Hər dəfəsində daha uğurlu nəticələr əldə etmək &uuml;&ccedil;&uuml;n b&uuml;t&uuml;n g&uuml;c&uuml;m&uuml;z&uuml; sərf edirik.', '2022-05-31 16:44:59', '2022-05-31 16:46:50'),
+(5, 'kimik_text_ru', '3Biz - Corn reklam agentliyi olaraq, həyatımızda ən faydalı bitkilərdən biri olan qarğıdalıdan qaynaqlandıq. İşimizi onun d&uuml;z&uuml;l&uuml;ş&uuml; kimi simmetrik, faydası kimi dəyərli etdik. Hər zaman ən yaxşısını etməyə və etdiklərimizi ən doğru şəkildə təqdim etməyə &ccedil;alışdıq. Biz kollektiv ruhunu artan saydakı işlərimizlə əks etdirdik. Corn Advertising 10 ildən artıq fəaliyyət g&ouml;stərən uğurlu şirkət olmaqla yanaşı, həm də işini bilən və hər m&uuml;ştərisini uğura aparan m&uuml;təxəssislərdən ibarət peşakar komandadır. Biz hər sifarişimizə fərdi yanaşaraq, m&uuml;ştəri məmnuniyyətini &ouml;n plana &ccedil;əkirik. Hər dəfəsində daha uğurlu nəticələr əldə etmək &uuml;&ccedil;&uuml;n b&uuml;t&uuml;n g&uuml;c&uuml;m&uuml;z&uuml; sərf edirik.', '2022-05-31 16:44:59', '2022-05-31 16:46:50'),
+(6, 'niye_text_az', '4Biz - Corn reklam agentliyi olaraq, həyatımızda ən faydalı bitkilərdən biri olan qarğıdalıdan qaynaqlandıq. İşimizi onun d&uuml;z&uuml;l&uuml;ş&uuml; kimi simmetrik, faydası kimi dəyərli etdik. Hər zaman ən yaxşısını etməyə və etdiklərimizi ən doğru şəkildə təqdim etməyə &ccedil;alışdıq. Biz kollektiv ruhunu artan saydakı işlərimizlə əks etdirdik. Corn Advertising 10 ildən artıq fəaliyyət g&ouml;stərən uğurlu şirkət olmaqla yanaşı, həm də işini bilən və hər m&uuml;ştərisini uğura aparan m&uuml;təxəssislərdən ibarət peşakar komandadır. Biz hər sifarişimizə fərdi yanaşaraq, m&uuml;ştəri məmnuniyyətini &ouml;n plana &ccedil;əkirik. Hər dəfəsində daha uğurlu nəticələr əldə etmək &uuml;&ccedil;&uuml;n b&uuml;t&uuml;n g&uuml;c&uuml;m&uuml;z&uuml; sərf edirik.', '2022-05-31 16:44:59', '2022-05-31 16:46:50'),
+(7, 'niye_text_en', '5Biz - Corn reklam agentliyi olaraq, həyatımızda ən faydalı bitkilərdən biri olan qarğıdalıdan qaynaqlandıq. İşimizi onun d&uuml;z&uuml;l&uuml;ş&uuml; kimi simmetrik, faydası kimi dəyərli etdik. Hər zaman ən yaxşısını etməyə və etdiklərimizi ən doğru şəkildə təqdim etməyə &ccedil;alışdıq. Biz kollektiv ruhunu artan saydakı işlərimizlə əks etdirdik. Corn Advertising 10 ildən artıq fəaliyyət g&ouml;stərən uğurlu şirkət olmaqla yanaşı, həm də işini bilən və hər m&uuml;ştərisini uğura aparan m&uuml;təxəssislərdən ibarət peşakar komandadır. Biz hər sifarişimizə fərdi yanaşaraq, m&uuml;ştəri məmnuniyyətini &ouml;n plana &ccedil;əkirik. Hər dəfəsində daha uğurlu nəticələr əldə etmək &uuml;&ccedil;&uuml;n b&uuml;t&uuml;n g&uuml;c&uuml;m&uuml;z&uuml; sərf edirik.', '2022-05-31 16:44:59', '2022-05-31 16:46:50'),
+(8, 'niye_text_ru', '6Biz - Corn reklam agentliyi olaraq, həyatımızda ən faydalı bitkilərdən biri olan qarğıdalıdan qaynaqlandıq. İşimizi onun d&uuml;z&uuml;l&uuml;ş&uuml; kimi simmetrik, faydası kimi dəyərli etdik. Hər zaman ən yaxşısını etməyə və etdiklərimizi ən doğru şəkildə təqdim etməyə &ccedil;alışdıq. Biz kollektiv ruhunu artan saydakı işlərimizlə əks etdirdik. Corn Advertising 10 ildən artıq fəaliyyət g&ouml;stərən uğurlu şirkət olmaqla yanaşı, həm də işini bilən və hər m&uuml;ştərisini uğura aparan m&uuml;təxəssislərdən ibarət peşakar komandadır. Biz hər sifarişimizə fərdi yanaşaraq, m&uuml;ştəri məmnuniyyətini &ouml;n plana &ccedil;əkirik. Hər dəfəsində daha uğurlu nəticələr əldə etmək &uuml;&ccedil;&uuml;n b&uuml;t&uuml;n g&uuml;c&uuml;m&uuml;z&uuml; sərf edirik.', '2022-05-31 16:44:59', '2022-05-31 16:46:50');
 
 -- --------------------------------------------------------
 
@@ -130,6 +186,7 @@ CREATE TABLE `products` (
   `text_az` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `text_en` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `text_ru` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `hits` int(11) NOT NULL DEFAULT '0',
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -138,17 +195,17 @@ CREATE TABLE `products` (
 -- Dumping data for table `products`
 --
 
-INSERT INTO `products` (`id`, `service_id`, `src`, `title_az`, `title_en`, `title_ru`, `text_az`, `text_en`, `text_ru`, `created_at`, `updated_at`) VALUES
-(2, 5, 'ma66l7GaJZSnmgud5f100wuU9c4sqKYi733ueUHH.jpg', 'Qui dolor voluptatem', 'Fugit totam dolore', 'Non aliquip perferen', 'Anim dolor quas aut', 'Corrupti voluptas q', 'Quis nulla obcaecati', '2022-05-30 04:47:14', '2022-05-30 21:58:19'),
-(3, 5, 'KWb89Roo4vnyoaa0wtbvVADM928lrsQO1bf4te77.jpg', 'Quisquam aut necessi', 'Reprehenderit eos e', 'Excepteur voluptas i', 'Quia nihil soluta ma', 'Eiusmod et placeat', 'At iusto voluptatibu', '2022-05-30 04:48:19', '2022-05-30 21:58:11'),
-(4, 5, '8tGPIvbNrNc1P5u0gIvZQW9PVmLIqRIMqKWaUg0G.jpg', 'Ut amet iste rem so', 'Cillum odio commodo', 'Impedit illum eum', 'Voluptate maiores ne', 'Ex consequatur sapie', 'Non ad veniam ex qu', '2022-05-30 21:59:00', '2022-05-30 21:59:00'),
-(5, 5, 'WrA3Z5jgb3z0a9OmaAG3G4wdDOiUP2ZDS0Zpuyha.jpg', 'Occaecat velit ea im', 'Eos aut fugit cupi', 'Aliquip in et est re', 'Accusantium sunt ips', 'Blanditiis molestias', 'Do optio animi vit', '2022-05-30 21:59:54', '2022-05-30 21:59:54'),
-(6, 6, 'xHD0z0xE0WY6KoPYLNVJlfykbPW5gojcyMRlRQaA.png', 'Nisi esse quidem au', 'Corrupti ab praesen', 'Reiciendis dolor eni', 'Omnis aut ipsum eu a', 'Ullamco ut dignissim', 'Qui eu reprehenderit', '2022-05-30 22:00:39', '2022-05-30 22:00:39'),
-(7, 6, 'dugbwrutLUdPHuP4yS6g6SRY9GOohjFX1M9DC9Um.png', 'Nam quis aliquid et', 'Exercitationem sed s', 'Culpa ullam nemo so', 'Amet rem libero vol', 'Nobis non quaerat qu', 'Repudiandae cillum l', '2022-05-30 22:06:59', '2022-05-30 22:06:59'),
-(8, 6, 'jvvINGIV7EXakhgc1ZDHBApFHF39lr2vyDGqgPfO.png', 'Exercitationem accus', 'Dolore optio molest', 'Aliquid et aut incid', 'Iure ipsa perferend', 'Ipsa ut exercitatio', 'Autem quaerat enim a', '2022-05-30 22:07:29', '2022-05-30 22:07:29'),
-(9, 5, 'n0XWH0qNpO6O79dmwLDFAeUClX72MFY2z7qeTVKh.jpg', 'Incidunt ipsum vit', 'Commodo itaque totam', 'Qui cupidatat commod', 'Et temporibus irure', 'Cupiditate voluptas', 'Culpa molestiae fac', '2022-05-30 22:08:16', '2022-05-30 22:30:54'),
-(10, 4, 'sWdVURZO7WcKRAIb2ZyXgPT6YifwOneuwqELxBpt.jpg', 'Eaque ducimus eaque', 'Dolor tempora velit', 'Sed quibusdam expedi', 'Qui et enim doloremq', 'Consequatur impedit', 'Et quas aut voluptat', '2022-05-30 22:09:03', '2022-05-30 22:09:03'),
-(11, 5, 'oghvyQms0p8ra1KqRcO81eDq1KX1E1gscMRECguj.jpg', 'Molestias voluptatem', 'Quo et porro ratione', 'Ducimus voluptatibu', 'Non ea sit delectus', 'Aut laborum Tempora', 'Architecto magna aut', '2022-05-30 22:09:11', '2022-05-30 22:31:01');
+INSERT INTO `products` (`id`, `service_id`, `src`, `title_az`, `title_en`, `title_ru`, `text_az`, `text_en`, `text_ru`, `hits`, `created_at`, `updated_at`) VALUES
+(2, 5, 'ma66l7GaJZSnmgud5f100wuU9c4sqKYi733ueUHH.jpg', 'Qui dolor voluptatem', 'Fugit totam dolore', 'Non aliquip perferen', 'Anim dolor quas aut', 'Corrupti voluptas q', 'Quis nulla obcaecati', 2, '2022-05-30 04:47:14', '2022-05-31 17:36:13'),
+(3, 5, 'KWb89Roo4vnyoaa0wtbvVADM928lrsQO1bf4te77.jpg', 'Quisquam aut necessi', 'Reprehenderit eos e', 'Excepteur voluptas i', 'Quia nihil soluta ma', 'Eiusmod et placeat', 'At iusto voluptatibu', 0, '2022-05-30 04:48:19', '2022-05-30 21:58:11'),
+(4, 7, '8tGPIvbNrNc1P5u0gIvZQW9PVmLIqRIMqKWaUg0G.jpg', 'Ut amet iste rem so', 'Cillum odio commodo', 'Impedit illum eum', 'Voluptate maiores ne', 'Ex consequatur sapie', 'Non ad veniam ex qu', 3, '2022-05-30 21:59:00', '2022-05-31 17:45:56'),
+(5, 5, 'WrA3Z5jgb3z0a9OmaAG3G4wdDOiUP2ZDS0Zpuyha.jpg', 'Occaecat velit ea im', 'Eos aut fugit cupi', 'Aliquip in et est re', 'Accusantium sunt ips', 'Blanditiis molestias', 'Do optio animi vit', 1, '2022-05-30 21:59:54', '2022-05-31 15:44:28'),
+(6, 6, 'xHD0z0xE0WY6KoPYLNVJlfykbPW5gojcyMRlRQaA.png', 'Nisi esse quidem au', 'Corrupti ab praesen', 'Reiciendis dolor eni', 'Omnis aut ipsum eu a', 'Ullamco ut dignissim', 'Qui eu reprehenderit', 2, '2022-05-30 22:00:39', '2022-05-31 15:42:15'),
+(7, 6, 'dugbwrutLUdPHuP4yS6g6SRY9GOohjFX1M9DC9Um.png', 'Nam quis aliquid et', 'Exercitationem sed s', 'Culpa ullam nemo so', 'Amet rem libero vol', 'Nobis non quaerat qu', 'Repudiandae cillum l', 0, '2022-05-30 22:06:59', '2022-05-30 22:06:59'),
+(8, 6, 'jvvINGIV7EXakhgc1ZDHBApFHF39lr2vyDGqgPfO.png', 'Exercitationem accus', 'Dolore optio molest', 'Aliquid et aut incid', 'Iure ipsa perferend', 'Ipsa ut exercitatio', 'Autem quaerat enim a', 0, '2022-05-30 22:07:29', '2022-05-30 22:07:29'),
+(9, 5, 'n0XWH0qNpO6O79dmwLDFAeUClX72MFY2z7qeTVKh.jpg', 'Incidunt ipsum vit', 'Commodo itaque totam', 'Qui cupidatat commod', 'Et temporibus irure', 'Cupiditate voluptas', 'Culpa molestiae fac', 0, '2022-05-30 22:08:16', '2022-05-30 22:30:54'),
+(10, 4, 'sWdVURZO7WcKRAIb2ZyXgPT6YifwOneuwqELxBpt.jpg', 'Eaque ducimus eaque', 'Dolor tempora velit', 'Sed quibusdam expedi', 'Qui et enim doloremq', 'Consequatur impedit', 'Et quas aut voluptat', 2, '2022-05-30 22:09:03', '2022-05-31 15:44:06'),
+(11, 5, 'oghvyQms0p8ra1KqRcO81eDq1KX1E1gscMRECguj.jpg', 'Molestias voluptatem', 'Quo et porro ratione', 'Ducimus voluptatibu', 'Non ea sit delectus', 'Aut laborum Tempora', 'Architecto magna aut', 0, '2022-05-30 22:09:11', '2022-05-30 22:31:01');
 
 -- --------------------------------------------------------
 
@@ -260,6 +317,18 @@ ALTER TABLE `failed_jobs`
   ADD UNIQUE KEY `failed_jobs_uuid_unique` (`uuid`);
 
 --
+-- Indexes for table `haqqimizdas`
+--
+ALTER TABLE `haqqimizdas`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `home_banners`
+--
+ALTER TABLE `home_banners`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `migrations`
 --
 ALTER TABLE `migrations`
@@ -323,16 +392,28 @@ ALTER TABLE `failed_jobs`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT for table `haqqimizdas`
+--
+ALTER TABLE `haqqimizdas`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT for table `home_banners`
+--
+ALTER TABLE `home_banners`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `options`
 --
 ALTER TABLE `options`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `personal_access_tokens`
