@@ -48,6 +48,7 @@
                     </li>
                     @endforeach
                 </ul>
+                {{ $products->onEachSide(0)->links('vendor.pagination.bootstrap-4') }}
             </div>
         </article>
     </main>

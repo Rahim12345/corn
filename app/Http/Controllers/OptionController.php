@@ -142,4 +142,70 @@ class OptionController extends Controller
         toastSuccess('Data əlavə edildi');
         return redirect()->back();
     }
+
+    public function aboutBanner()
+    {
+        return view('back.pages.about.banner');
+    }
+
+    public function aboutBannerPost(Request $request)
+    {
+        $this->validate($request,[
+            'src'=>'nullable|max:2048'
+        ],[],[
+            'src'=>'Photo'
+        ]);
+
+        $src   = $this->fileUpdate(\App\Helpers\Options::getOption('about_banner'), $request->hasFile('src'), $request->src, 'files/about_banner/');
+        Option::updateOrCreate(
+            ['key'   => 'about_banner'],
+            [
+                'value' => $src
+            ]
+        );
+
+        toastSuccess('Data əlavə edildi');
+        return redirect()->back();
+    }
+
+    public function aboutText()
+    {
+        return view('back.pages.about.create');
+    }
+
+    public function aboutTextPost(Request $request)
+    {
+        $this->validate($request,[
+            'kimik_text_az'=>'nullable|max:20000',
+            'kimik_text_en'=>'nullable|max:20000',
+            'kimik_text_ru'=>'nullable|max:20000',
+            'niye_text_az'=>'nullable|max:20000',
+            'niye_text_en'=>'nullable|max:20000',
+            'niye_text_ru'=>'nullable|max:20000',
+        ],[],[
+            'kimik_text_az'=>'Biz kimik?(AZ)',
+            'kimik_text_en'=>'Biz kimik?(EN)',
+            'kimik_text_ru'=>'Biz kimik?(RU)',
+            'niye_text_az'=>'Niyə biz?(AZ)',
+            'niye_text_en'=>'Niyə biz?(EN)',
+            'niye_text_ru'=>'Niyə biz?(RU)',
+        ]);
+
+
+        foreach ($request->keys() as $key)
+        {
+            if ($key != '_token')
+            {
+                Option::updateOrCreate(
+                    ['key'   => $key],
+                    [
+                        'value' => $request->post($key)
+                    ]
+                );
+            }
+        }
+
+        toastSuccess('Data əlavə edildi');
+        return redirect()->back();
+    }
 }

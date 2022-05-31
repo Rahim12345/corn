@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\front;
 
 use App\Http\Controllers\Controller;
+use App\Models\Haqqimizda;
 use App\Models\HomeBanner;
 use App\Models\Product;
 use App\Models\Service;
@@ -30,6 +31,13 @@ class PagesController extends Controller
             'second'=>$this->second,
             'third'=>$this->third,
             'banners'=>HomeBanner::latest()->get()
+        ]);
+    }
+
+    public function about()
+    {
+        return view('front.pages.about',[
+            'services'=>Haqqimizda::latest()->get()
         ]);
     }
 

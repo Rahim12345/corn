@@ -1,12 +1,21 @@
 <?php
 
 use App\Http\Controllers\front\PagesController;
+use App\Http\Controllers\HaqqimizdaController;
 use App\Http\Controllers\HomeBannerController;
 use Illuminate\Support\Facades\Route;
+use UniSharp\LaravelFilemanager\Lfm;
+
+Route::group(['prefix' => 'laravel-filemanager', 'middleware' => ['web']], function () {
+    Lfm::routes();
+});
+
 
 Route::group(['middleware'=>'locale'],function (){
     Route::get('/', [PagesController::class, 'home'])
         ->name('front.home');
+    Route::get('/about', [PagesController::class, 'about'])
+        ->name('front.about');
     Route::get('/services/{slug?}', [PagesController::class, 'services'])
         ->name('front.services');
     Route::get('/service/project-details/{id}', [PagesController::class, 'prodoctDetails'])
@@ -35,6 +44,16 @@ Route::group(['prefix'=>'admin','middleware'=>['auth', 'locale']],function (){
     Route::get('service-changer/{id}',[App\Http\Controllers\ServiceController::class,'serviceChanger'])->name('service.changer');
     Route::resource('product',App\Http\Controllers\ProductController::class);
     Route::get('product-image-deleter/{id}',[App\Http\Controllers\ProductImageController::class,'deleter'])->name('image.deleter');
+
+    Route::get('about-banner',[\App\Http\Controllers\OptionController::class,'aboutBanner'])->name('about.banner');
+
+    Route::post('about-banner-post',[\App\Http\Controllers\OptionController::class,'aboutBannerPost'])->name('about.banner.post');
+
+    Route::get('about-text',[\App\Http\Controllers\OptionController::class,'aboutText'])->name('about.text');
+
+    Route::post('about-text-post',[\App\Http\Controllers\OptionController::class,'aboutTextPost'])->name('about.text.post');
+
+    Route::resource('about', HaqqimizdaController::class);
 });
 
 Route::get('langs/{locale}',[App\Http\Controllers\profileController::class,'langSwitcher'])

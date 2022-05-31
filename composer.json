@@ -13,6 +13,7 @@
         "laravel/helpers": "^1.5",
         "laravel/sanctum": "^2.11",
         "laravel/tinker": "^2.5",
+        "unisharp/laravel-filemanager": "^2.5",
         "yajra/laravel-datatables-oracle": "^9.20",
         "yoeunes/toastr": "^1.2"
     },

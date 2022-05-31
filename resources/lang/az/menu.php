@@ -8,4 +8,6 @@ return [
     'teqdimat'=>'TƏQDİMAT',
     'elaqe'=>'ƏLAQƏ',
     'see_project'=>'Layihəyə baxın',
+    'biz_kimik'=>'Biz kimik?',
+    'niye_biz'=>'Niyə biz?',
 ];

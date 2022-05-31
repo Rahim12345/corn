@@ -61,6 +61,16 @@
                             </div>
                             <div class="dropend">
                                 <a class="dropdown-item dropdown-toggle" href="#sidebar-authentication" data-bs-toggle="dropdown" role="button" aria-expanded="false" >
+                                    Haqqımızda
+                                </a>
+                                <div class="dropdown-menu">
+                                    <a href="{{ route('about.banner') }}" class="dropdown-item">Banner</a>
+                                    <a href="{{ route('about.text') }}" class="dropdown-item">Text</a>
+                                    <a href="{{ route('about.index') }}" class="dropdown-item">Services</a>
+                                </div>
+                            </div>
+                            <div class="dropend">
+                                <a class="dropdown-item dropdown-toggle" href="#sidebar-authentication" data-bs-toggle="dropdown" role="button" aria-expanded="false" >
                                     Servislər
                                 </a>
                                 <div class="dropdown-menu">

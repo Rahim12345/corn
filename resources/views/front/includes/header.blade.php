@@ -191,7 +191,7 @@
             <ul class="navigation__list">
                 <li class="navigation__item navigation__item--current"></li>
                 <li class="navigation__item">
-                    <a class="navigation__link animsition-link" href="about.html"
+                    <a class="navigation__link animsition-link" href="{{ route('front.about') }}"
                     >{{ __('menu.about') }}</a
                     >
                 </li>
