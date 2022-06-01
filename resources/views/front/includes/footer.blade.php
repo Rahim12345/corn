@@ -266,6 +266,8 @@
     });
 </script>
 <script src="{{ asset('corn') }}/js/main.js"></script>
+@toastr_js
+@toastr_render
 @yield('js')
 </body>
 </html>

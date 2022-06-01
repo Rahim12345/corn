@@ -10,4 +10,9 @@ return [
     'see_project'=>'See project',
     'biz_kimik'=>'Who are we?',
     'niye_biz'=>'Why us?',
+    'name'=>'Name',
+    'email'=>'Email',
+    'subject'=>'Subject',
+    'message'=>'Message',
+    'submit'=>'Submit',
 ];

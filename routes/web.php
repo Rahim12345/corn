@@ -16,6 +16,10 @@ Route::group(['middleware'=>'locale'],function (){
         ->name('front.home');
     Route::get('/about', [PagesController::class, 'about'])
         ->name('front.about');
+    Route::get('/contact', [PagesController::class, 'contact'])
+        ->name('front.contact');
+    Route::post('/contact', [PagesController::class,'contactPost'])
+        ->name('front.contact.post');
     Route::get('/services/{slug?}', [PagesController::class, 'services'])
         ->name('front.services');
     Route::get('/service/project-details/{id}', [PagesController::class, 'prodoctDetails'])

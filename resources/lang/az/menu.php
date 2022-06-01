@@ -10,4 +10,9 @@ return [
     'see_project'=>'Layihəyə baxın',
     'biz_kimik'=>'Biz kimik?',
     'niye_biz'=>'Niyə biz?',
+    'name'=>'Ad',
+    'email'=>'Email',
+    'subject'=>'Mövzu',
+    'message'=>'Mesaj',
+    'submit'=>'Göndər',
 ];

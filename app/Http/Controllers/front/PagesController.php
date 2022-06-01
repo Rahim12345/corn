@@ -3,11 +3,15 @@
 namespace App\Http\Controllers\front;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\ContactRequest;
+use App\Mail\ContactEmail;
+use App\Models\Contact;
 use App\Models\Haqqimizda;
 use App\Models\HomeBanner;
 use App\Models\Product;
 use App\Models\Service;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 
 class PagesController extends Controller
 {
@@ -39,6 +43,54 @@ class PagesController extends Controller
         return view('front.pages.about',[
             'services'=>Haqqimizda::latest()->get()
         ]);
+    }
+
+    public function contact()
+    {
+        return view('front.pages.contact');
+    }
+
+    public function contactPost(ContactRequest $request)
+    {
+        $contact = Contact::create([
+            'name'=>$request->name,
+            'email'=>$request->email,
+            'subject'=>$request->subject,
+            'message'=>$request->message,
+            'ip'=>$request->ip()
+        ]);
+
+        $title                  = $contact->name.' tərəfindən yeni elektron müraciət daxil oldu.';
+        $text                   = '
+            <table>
+                <tr>
+                    <td>Ad,Soyad:</td>
+                    <td>'.$contact->name.'</td>
+                </tr>
+                <tr>
+                    <td>E-mail:</td>
+                    <td>'.$contact->email.'</td>
+                </tr>
+                <tr>
+                    <td>Mövzu:</td>
+                    <td>'.$contact->subject.'</td>
+                </tr>
+                <tr>
+                    <td>Mesaj:</td>
+                    <td>'.$contact->message.'</td>
+                </tr>
+            </table>
+            ';
+
+        $details = [
+            'title' => $title,
+            'body'  => $text
+        ];
+        Mail::to(env('MAIL_TO_ADDRESS'))->send(new ContactEmail($details));
+
+        return \response()->json([
+            'message' => __('static.contact_success'),
+        ],200);
     }
 
     public function services($slug = null)

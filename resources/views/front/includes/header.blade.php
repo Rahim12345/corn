@@ -2,6 +2,7 @@
 <html class="no-js" lang="tr">
 <head>
     <meta charset="UTF-8" />
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />
     <meta name="msapplication-TileColor" content="#da532c" />
     <meta name="theme-color" content="#ffffff" />
@@ -12,6 +13,7 @@
     <link rel="manifest" href="{{ asset('corn') }}/favicons/site.html" />
     <link  rel="mask-icon"   href="{{ asset('corn') }}/favicons/safari-pinned-tab.svg" color="#5bbad5" />
     <link rel="stylesheet" href="{{ asset('corn') }}/css/main.css" />
+    @toastr_css
     @yield('css')
     <title>{{ env('APP_NAME') }} - @yield('title')</title>
 </head>
@@ -216,7 +218,7 @@
                     >
                 </li>
                 <li class="navigation__item">
-                    <a class="navigation__link animsition-link" href="contact.html"
+                    <a class="navigation__link animsition-link" href="{{ route('front.contact') }}"
                     >{{ __('menu.elaqe') }}</a
                     >
                 </li>
