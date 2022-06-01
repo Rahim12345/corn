@@ -79,6 +79,15 @@
                                     <a href="{{ route('product.index') }}" class="dropdown-item">Məhsul &nbsp; <i class="fa fa-plus"></i></a>
                                 </div>
                             </div>
+                            <div class="dropend">
+                                <a class="dropdown-item dropdown-toggle" href="#sidebar-authentication" data-bs-toggle="dropdown" role="button" aria-expanded="false" >
+                                    Təqdimat
+                                </a>
+                                <div class="dropdown-menu">
+                                    <a href="{{ route('presentation.banner') }}" class="dropdown-item">Banner</a>
+                                    <a href="{{ route('presentation.index') }}" class="dropdown-item">Təqdimatlar</a>
+                                </div>
+                            </div>
 
                         </div>
                     </li>

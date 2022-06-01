@@ -213,7 +213,7 @@
                     >
                 </li>
                 <li class="navigation__item">
-                    <a class="navigation__link animsition-link" href="presentation.html"
+                    <a class="navigation__link animsition-link" href="{{ route('front.presentation') }}"
                     >{{ __('menu.teqdimat') }}</a
                     >
                 </li>

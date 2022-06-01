@@ -8,6 +8,7 @@ use App\Mail\ContactEmail;
 use App\Models\Contact;
 use App\Models\Haqqimizda;
 use App\Models\HomeBanner;
+use App\Models\Presentation;
 use App\Models\Product;
 use App\Models\Service;
 use Illuminate\Http\Request;
@@ -91,6 +92,13 @@ class PagesController extends Controller
         return \response()->json([
             'message' => __('static.contact_success'),
         ],200);
+    }
+
+    public function presentation()
+    {
+        return view('front.pages.presentation',[
+            'presentations'=>Presentation::latest()->get()
+        ]);
     }
 
     public function services($slug = null)

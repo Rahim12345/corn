@@ -208,4 +208,29 @@ class OptionController extends Controller
         toastSuccess('Data əlavə edildi');
         return redirect()->back();
     }
+
+    public function presentationBanner()
+    {
+        return view('back.pages.presentations.banner');
+    }
+
+    public function presentationBannerPost(Request $request)
+    {
+        $this->validate($request,[
+            'src'=>'nullable|max:2048'
+        ],[],[
+            'src'=>'Photo'
+        ]);
+
+        $src   = $this->fileUpdate(\App\Helpers\Options::getOption('presentation_banner'), $request->hasFile('src'), $request->src, 'files/presentation_banner/');
+        Option::updateOrCreate(
+            ['key'   => 'presentation_banner'],
+            [
+                'value' => $src
+            ]
+        );
+
+        toastSuccess('Data əlavə edildi');
+        return redirect()->back();
+    }
 }
