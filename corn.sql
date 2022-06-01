@@ -2,8 +2,8 @@
 -- version 5.1.3
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost:3306
--- Generation Time: May 31, 2022 at 09:50 PM
+-- Host: localhost
+-- Generation Time: Jun 01, 2022 at 01:16 PM
 -- Server version: 5.7.33
 -- PHP Version: 7.4.19
 
@@ -20,6 +20,57 @@ SET time_zone = "+00:00";
 --
 -- Database: `corn`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `blogs`
+--
+
+CREATE TABLE `blogs` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `src` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `title_az` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `title_en` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `title_ru` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `intro_az` text COLLATE utf8mb4_unicode_ci,
+  `intro_en` text COLLATE utf8mb4_unicode_ci,
+  `intro_ru` text COLLATE utf8mb4_unicode_ci,
+  `text_az` text COLLATE utf8mb4_unicode_ci,
+  `text_en` text COLLATE utf8mb4_unicode_ci,
+  `text_ru` text COLLATE utf8mb4_unicode_ci,
+  `hits` int(11) NOT NULL DEFAULT '0',
+  `likes` int(11) NOT NULL DEFAULT '0',
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `contacts`
+--
+
+CREATE TABLE `contacts` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `email` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `subject` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `message` text COLLATE utf8mb4_unicode_ci,
+  `ip` varchar(45) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `contacts`
+--
+
+INSERT INTO `contacts` (`id`, `name`, `email`, `subject`, `message`, `ip`, `created_at`, `updated_at`) VALUES
+(1, 'Kellie Fitzgerald', 'pyhiduh@mailinator.com', NULL, 'Eu ducimus doloribu', '127.0.0.1', '2022-06-01 04:11:14', '2022-06-01 04:11:14'),
+(2, 'Alfreda Collier', 'jelaw@mailinator.com', NULL, 'Est qui corporis vo', '127.0.0.1', '2022-06-01 04:12:13', '2022-06-01 04:12:13'),
+(3, 'Zeph Long', 'qurumihyz@mailinator.com', NULL, 'Ratione veniam nemo', '127.0.0.1', '2022-06-01 04:13:31', '2022-06-01 04:13:31'),
+(4, 'Ifeoma Mcknight', 'putanapuk@mailinator.com', 'Est blanditiis mini', 'Consectetur impedit', '127.0.0.1', '2022-06-01 04:15:04', '2022-06-01 04:15:04');
 
 -- --------------------------------------------------------
 
@@ -110,7 +161,10 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (9, '2022_05_30_055624_create_products_table', 3),
 (10, '2022_05_30_060727_create_product_images_table', 3),
 (11, '2022_05_31_074331_create_home_banners_table', 4),
-(13, '2022_05_31_201305_create_haqqimizdas_table', 5);
+(13, '2022_05_31_201305_create_haqqimizdas_table', 5),
+(14, '2022_05_01_071625_create_contacts_table', 6),
+(15, '2022_06_01_082024_create_presentations_table', 7),
+(16, '2022_06_01_125030_create_blogs_table', 8);
 
 -- --------------------------------------------------------
 
@@ -138,7 +192,8 @@ INSERT INTO `options` (`id`, `key`, `value`, `created_at`, `updated_at`) VALUES
 (5, 'kimik_text_ru', '3Biz - Corn reklam agentliyi olaraq, həyatımızda ən faydalı bitkilərdən biri olan qarğıdalıdan qaynaqlandıq. İşimizi onun d&uuml;z&uuml;l&uuml;ş&uuml; kimi simmetrik, faydası kimi dəyərli etdik. Hər zaman ən yaxşısını etməyə və etdiklərimizi ən doğru şəkildə təqdim etməyə &ccedil;alışdıq. Biz kollektiv ruhunu artan saydakı işlərimizlə əks etdirdik. Corn Advertising 10 ildən artıq fəaliyyət g&ouml;stərən uğurlu şirkət olmaqla yanaşı, həm də işini bilən və hər m&uuml;ştərisini uğura aparan m&uuml;təxəssislərdən ibarət peşakar komandadır. Biz hər sifarişimizə fərdi yanaşaraq, m&uuml;ştəri məmnuniyyətini &ouml;n plana &ccedil;əkirik. Hər dəfəsində daha uğurlu nəticələr əldə etmək &uuml;&ccedil;&uuml;n b&uuml;t&uuml;n g&uuml;c&uuml;m&uuml;z&uuml; sərf edirik.', '2022-05-31 16:44:59', '2022-05-31 16:46:50'),
 (6, 'niye_text_az', '4Biz - Corn reklam agentliyi olaraq, həyatımızda ən faydalı bitkilərdən biri olan qarğıdalıdan qaynaqlandıq. İşimizi onun d&uuml;z&uuml;l&uuml;ş&uuml; kimi simmetrik, faydası kimi dəyərli etdik. Hər zaman ən yaxşısını etməyə və etdiklərimizi ən doğru şəkildə təqdim etməyə &ccedil;alışdıq. Biz kollektiv ruhunu artan saydakı işlərimizlə əks etdirdik. Corn Advertising 10 ildən artıq fəaliyyət g&ouml;stərən uğurlu şirkət olmaqla yanaşı, həm də işini bilən və hər m&uuml;ştərisini uğura aparan m&uuml;təxəssislərdən ibarət peşakar komandadır. Biz hər sifarişimizə fərdi yanaşaraq, m&uuml;ştəri məmnuniyyətini &ouml;n plana &ccedil;əkirik. Hər dəfəsində daha uğurlu nəticələr əldə etmək &uuml;&ccedil;&uuml;n b&uuml;t&uuml;n g&uuml;c&uuml;m&uuml;z&uuml; sərf edirik.', '2022-05-31 16:44:59', '2022-05-31 16:46:50'),
 (7, 'niye_text_en', '5Biz - Corn reklam agentliyi olaraq, həyatımızda ən faydalı bitkilərdən biri olan qarğıdalıdan qaynaqlandıq. İşimizi onun d&uuml;z&uuml;l&uuml;ş&uuml; kimi simmetrik, faydası kimi dəyərli etdik. Hər zaman ən yaxşısını etməyə və etdiklərimizi ən doğru şəkildə təqdim etməyə &ccedil;alışdıq. Biz kollektiv ruhunu artan saydakı işlərimizlə əks etdirdik. Corn Advertising 10 ildən artıq fəaliyyət g&ouml;stərən uğurlu şirkət olmaqla yanaşı, həm də işini bilən və hər m&uuml;ştərisini uğura aparan m&uuml;təxəssislərdən ibarət peşakar komandadır. Biz hər sifarişimizə fərdi yanaşaraq, m&uuml;ştəri məmnuniyyətini &ouml;n plana &ccedil;əkirik. Hər dəfəsində daha uğurlu nəticələr əldə etmək &uuml;&ccedil;&uuml;n b&uuml;t&uuml;n g&uuml;c&uuml;m&uuml;z&uuml; sərf edirik.', '2022-05-31 16:44:59', '2022-05-31 16:46:50'),
-(8, 'niye_text_ru', '6Biz - Corn reklam agentliyi olaraq, həyatımızda ən faydalı bitkilərdən biri olan qarğıdalıdan qaynaqlandıq. İşimizi onun d&uuml;z&uuml;l&uuml;ş&uuml; kimi simmetrik, faydası kimi dəyərli etdik. Hər zaman ən yaxşısını etməyə və etdiklərimizi ən doğru şəkildə təqdim etməyə &ccedil;alışdıq. Biz kollektiv ruhunu artan saydakı işlərimizlə əks etdirdik. Corn Advertising 10 ildən artıq fəaliyyət g&ouml;stərən uğurlu şirkət olmaqla yanaşı, həm də işini bilən və hər m&uuml;ştərisini uğura aparan m&uuml;təxəssislərdən ibarət peşakar komandadır. Biz hər sifarişimizə fərdi yanaşaraq, m&uuml;ştəri məmnuniyyətini &ouml;n plana &ccedil;əkirik. Hər dəfəsində daha uğurlu nəticələr əldə etmək &uuml;&ccedil;&uuml;n b&uuml;t&uuml;n g&uuml;c&uuml;m&uuml;z&uuml; sərf edirik.', '2022-05-31 16:44:59', '2022-05-31 16:46:50');
+(8, 'niye_text_ru', '6Biz - Corn reklam agentliyi olaraq, həyatımızda ən faydalı bitkilərdən biri olan qarğıdalıdan qaynaqlandıq. İşimizi onun d&uuml;z&uuml;l&uuml;ş&uuml; kimi simmetrik, faydası kimi dəyərli etdik. Hər zaman ən yaxşısını etməyə və etdiklərimizi ən doğru şəkildə təqdim etməyə &ccedil;alışdıq. Biz kollektiv ruhunu artan saydakı işlərimizlə əks etdirdik. Corn Advertising 10 ildən artıq fəaliyyət g&ouml;stərən uğurlu şirkət olmaqla yanaşı, həm də işini bilən və hər m&uuml;ştərisini uğura aparan m&uuml;təxəssislərdən ibarət peşakar komandadır. Biz hər sifarişimizə fərdi yanaşaraq, m&uuml;ştəri məmnuniyyətini &ouml;n plana &ccedil;əkirik. Hər dəfəsində daha uğurlu nəticələr əldə etmək &uuml;&ccedil;&uuml;n b&uuml;t&uuml;n g&uuml;c&uuml;m&uuml;z&uuml; sərf edirik.', '2022-05-31 16:44:59', '2022-05-31 16:46:50'),
+(9, 'presentation_banner', 'EE20jgsVB1yfi5w2xwSFn87ZnJlK1TnOYqfKeT0r.gif', '2022-06-01 07:31:42', '2022-06-01 08:45:59');
 
 -- --------------------------------------------------------
 
@@ -169,6 +224,31 @@ CREATE TABLE `personal_access_tokens` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `presentations`
+--
+
+CREATE TABLE `presentations` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `src` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `name_az` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `name_en` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `name_ru` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `pdf` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `presentations`
+--
+
+INSERT INTO `presentations` (`id`, `src`, `name_az`, `name_en`, `name_ru`, `pdf`, `created_at`, `updated_at`) VALUES
+(2, 'LJBGZaqhFHjlvi82r6aR1eJQ04PdwQgtOE8bwkUZ.jpg', 'FENSTAR<br />\r\nBREND<br />\r\nKATALOQ<br />\r\n2021', 'FENSTAR<br />\r\nBREND<br />\r\nKATALOQ<br />\r\n2021', 'FENSTAR<br />\r\nBREND<br />\r\nKATALOQ<br />\r\n2021', 'KlqXXKFqf2RQ2Px3FDHGEyrYLLoL2ahCqm0PlMUC.pdf', '2022-06-01 06:02:27', '2022-06-01 06:02:27'),
+(3, 'cQ24t9Vbc1pYM0n2H73DtrA7qAx1cnJadYltSnwh.jpg', '1FENSTAR<br />\r\nBREND<br />\r\nKATALOQ<br />\r\n2021', '2FENSTAR<br />\r\nBREND<br />\r\nKATALOQ<br />\r\n2021', '3FENSTAR<br />\r\nBREND<br />\r\nKATALOQ<br />\r\n2021', 'ra62bhaXMzXlzuRpJnEPKZ63TPBdGGvJh6L6qxI2.pdf', '2022-06-01 06:02:48', '2022-06-01 06:24:56');
 
 -- --------------------------------------------------------
 
@@ -310,6 +390,18 @@ INSERT INTO `users` (`id`, `name`, `avatar`, `email`, `email_verified_at`, `pass
 --
 
 --
+-- Indexes for table `blogs`
+--
+ALTER TABLE `blogs`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `contacts`
+--
+ALTER TABLE `contacts`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `failed_jobs`
 --
 ALTER TABLE `failed_jobs`
@@ -355,6 +447,12 @@ ALTER TABLE `personal_access_tokens`
   ADD KEY `personal_access_tokens_tokenable_type_tokenable_id_index` (`tokenable_type`,`tokenable_id`);
 
 --
+-- Indexes for table `presentations`
+--
+ALTER TABLE `presentations`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `products`
 --
 ALTER TABLE `products`
@@ -386,6 +484,18 @@ ALTER TABLE `users`
 --
 
 --
+-- AUTO_INCREMENT for table `blogs`
+--
+ALTER TABLE `blogs`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `contacts`
+--
+ALTER TABLE `contacts`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
 -- AUTO_INCREMENT for table `failed_jobs`
 --
 ALTER TABLE `failed_jobs`
@@ -407,19 +517,25 @@ ALTER TABLE `home_banners`
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT for table `options`
 --
 ALTER TABLE `options`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `personal_access_tokens`
 --
 ALTER TABLE `personal_access_tokens`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `presentations`
+--
+ALTER TABLE `presentations`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `products`
