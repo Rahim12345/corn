@@ -89,6 +89,16 @@
                                 </div>
                             </div>
 
+                            <div class="dropend">
+                                <a class="dropdown-item dropdown-toggle" href="#sidebar-authentication" data-bs-toggle="dropdown" role="button" aria-expanded="false" >
+                                    Blog
+                                </a>
+                                <div class="dropdown-menu">
+                                    <a href="{{ route('presentation.banner') }}" class="dropdown-item">Banner</a>
+                                    <a href="{{ route('blog.index') }}" class="dropdown-item">Bloglar</a>
+                                </div>
+                            </div>
+
                         </div>
                     </li>
                 </ul>

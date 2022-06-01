@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\BlogController;
 use App\Http\Controllers\front\PagesController;
 use App\Http\Controllers\HaqqimizdaController;
 use App\Http\Controllers\HomeBannerController;
@@ -67,6 +68,8 @@ Route::group(['prefix'=>'admin','middleware'=>['auth', 'locale']],function (){
     Route::get('presentation-banner',[\App\Http\Controllers\OptionController::class,'presentationBanner'])->name('presentation.banner');
 
     Route::post('presentation-banner-post',[\App\Http\Controllers\OptionController::class,'presentationBannerPost'])->name('presentation.banner.post');
+
+    Route::resource('blog', BlogController::class);
 });
 
 Route::get('langs/{locale}',[App\Http\Controllers\profileController::class,'langSwitcher'])
