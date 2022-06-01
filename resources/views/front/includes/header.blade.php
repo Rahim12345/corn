@@ -203,7 +203,7 @@
                     >
                 </li>
                 <li class="navigation__item">
-                    <a class="navigation__link animsition-link" href="blog.html"
+                    <a class="navigation__link animsition-link" href="{{ route('front.blog') }}"
                     >{{ __('menu.blog') }}</a
                     >
                 </li>

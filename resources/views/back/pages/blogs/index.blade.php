@@ -31,7 +31,7 @@
                             @foreach($presentations as $item)
                                 <tr>
                                     <td><img src="{{ asset('files/blogs/'.$item->src) }}" style="width: 100px" alt=""></td>
-                                    <td>{!! $item->name_az !!}</td>
+                                    <td>{!! $item->title_az !!}</td>
                                     <td>
                                         <div class="btn-list flex-nowrap">
                                             <a href="{{ route('blog.edit',$item->id) }}" class="btn btn-primary"><i class="fa fa-pen"></i></a>

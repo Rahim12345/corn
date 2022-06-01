@@ -5,9 +5,11 @@ namespace App\Http\Controllers;
 use App\Models\Blog;
 use App\Http\Requests\StoreBlogRequest;
 use App\Http\Requests\UpdateBlogRequest;
+use App\Traits\FileUploader;
 
 class BlogController extends Controller
 {
+    use FileUploader;
     /**
      * Display a listing of the resource.
      *
@@ -38,9 +40,15 @@ class BlogController extends Controller
      */
     public function store(StoreBlogRequest $request)
     {
-        $src = $this->fileSave('files/presentations/covers/',$request,'src');
+        $src = $this->fileSave('files/blogs/',$request,'src');
         Blog::create([
             'src'=>$src,
+            'title_az'=>$request->title_az,
+            'title_en'=>$request->title_en,
+            'title_ru'=>$request->title_ru,
+            'slug_az'=>str_slug($request->title_az),
+            'slug_en'=>str_slug($request->title_en),
+            'slug_ru'=>str_slug($request->title_ru),
             'intro_az'=>$request->intro_az,
             'intro_en'=>$request->intro_en,
             'intro_ru'=>$request->intro_ru,
@@ -85,6 +93,23 @@ class BlogController extends Controller
      */
     public function update(UpdateBlogRequest $request, Blog $blog)
     {
+        $src   = $this->fileUpdate($blog->src, $request->hasFile('src'), $request->src, 'files/blogs/');
+        $blog->update([
+            'src'=>$src,
+            'title_az'=>$request->title_az,
+            'title_en'=>$request->title_en,
+            'title_ru'=>$request->title_ru,
+            'slug_az'=>str_slug($request->title_az),
+            'slug_en'=>str_slug($request->title_en),
+            'slug_ru'=>str_slug($request->title_ru),
+            'intro_az'=>$request->intro_az,
+            'intro_en'=>$request->intro_en,
+            'intro_ru'=>$request->intro_ru,
+            'text_az'=>$request->text_az,
+            'text_en'=>$request->text_en,
+            'text_ru'=>$request->text_ru,
+        ]);
+
         toastSuccess('Data redakte edildi');
         return redirect()->route('blog.index');
     }
@@ -97,7 +122,7 @@ class BlogController extends Controller
      */
     public function destroy(Blog $blog)
     {
-
+        $this->fileDelete('files/blogs/'.$blog->src);
         $blog->delete();
         toastSuccess('Data silindi');
         return redirect()->route('blog.index');

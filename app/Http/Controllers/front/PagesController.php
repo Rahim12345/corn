@@ -5,6 +5,7 @@ namespace App\Http\Controllers\front;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\ContactRequest;
 use App\Mail\ContactEmail;
+use App\Models\Blog;
 use App\Models\Contact;
 use App\Models\Haqqimizda;
 use App\Models\HomeBanner;
@@ -92,6 +93,37 @@ class PagesController extends Controller
         return \response()->json([
             'message' => __('static.contact_success'),
         ],200);
+    }
+
+    public function blog()
+    {
+        $latestBlogs    = Blog::latest()->take(3)->get();
+        $moreHitsBlogs  = Blog::orderBy('hits','desc')->take(3)->get();
+
+        return view('front.pages.blog',[
+            'blogs'=>Blog::latest()->paginate(10),
+            'latestBlogs'=>$latestBlogs,
+            'moreHitsBlogs'=>$moreHitsBlogs,
+        ]);
+    }
+
+    public function blogSingle($slug)
+    {
+        $blog = Blog::where('slug_az',$slug)
+            ->orWhere('slug_en',$slug)
+            ->orWhere('slug_ru',$slug)
+            ->firstOrFail();
+
+        $blog->increment('hits');
+
+        $latestBlogs    = Blog::latest()->take(3)->get();
+        $moreHitsBlogs  = Blog::orderBy('hits','desc')->take(3)->get();
+
+        return view('front.pages.blog-single',[
+            'blog'=>$blog,
+            'latestBlogs'=>$latestBlogs,
+            'moreHitsBlogs'=>$moreHitsBlogs,
+        ]);
     }
 
     public function presentation()
